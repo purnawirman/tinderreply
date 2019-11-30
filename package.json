@@ -1,5 +1,5 @@
 {
-  "name": "new",
+  "name": "tinderreply",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -11,7 +11,8 @@
     "material-ui": "1.0.0-beta.47",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "webpack": "4.41.2"
   },
   "devDependencies": {
     "typescript": "3.3.3"
