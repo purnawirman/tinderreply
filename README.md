@@ -1,2 +1,0 @@
-# tinderreply
-Created with CodeSandbox
