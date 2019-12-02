@@ -3,13 +3,15 @@ import { Header, Footer } from "./Layout";
 import Messages from "./Messages";
 import Voting from "./Voting";
 import { AppBar } from "@material-ui/core";
+import {comments, images} from "./store"
+import {BrowserRouter, Route}
 
 export default class extends Component {
   render() {
     return (
       <Fragment>
         <Header />
-        <Voting image={"/static/messages/Snip20191130_25.png"} />
+        <Voting comments={comments} />
         <Footer />
       </Fragment>
     );

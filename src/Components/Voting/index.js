@@ -14,8 +14,14 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Select
+  Select,
+  TextField,
+  List,
+  ListItem,
+  ListItemText,
+  IconButton
 } from "@material-ui/core";
+import { EmojiEmotions, ThumbUp, ThumbDown } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,8 +33,9 @@ const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
-    color: theme.palette.text.secondary
-    // height:
+    color: theme.palette.text.secondary,
+    flexGrow: 1,
+    height: 500
   },
   media: {
     height: 0,
@@ -37,9 +44,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Voting({ image }) {
+export default function Voting({ comments }) {
   const classes = useStyles();
-  console.log(process.env.PUBLIC_URL + "/static/messages/Snip20191130_25.png");
+
   return (
     <Grid container sm={12} className={classes.root} spacing={1}>
       <Grid item xs={4}>
@@ -54,7 +61,7 @@ export default function Voting({ image }) {
 
           <Card className={classes.card}>
             <CardActionArea>
-              <img src="http://placekitten.com/200/300" />
+              <img src="http://placekitten.com/200/300" alt="message" />
               <CardContent>
                 <Typography gutterBottom variant="body2">
                   Messages
@@ -65,7 +72,43 @@ export default function Voting({ image }) {
         </Paper>
       </Grid>
       <Grid item xs={8}>
-        <Paper className={classes.paper}>Votes</Paper>
+        <Paper className={classes.paper}>
+          <form>
+            <FormControl className={classes.formControl}>
+              <List>
+                {comments.map(cm => {
+                  return (
+                    <ListItem>
+                      <ListItemText primary={cm.text} />
+                      <IconButton>
+                        <ThumbUp />
+                        {cm.like}
+                      </IconButton>
+                      <IconButton>
+                        <EmojiEmotions />
+                        {cm.funny}
+                      </IconButton>
+                      <IconButton>
+                        <ThumbDown />
+                        {cm.hate}
+                      </IconButton>
+                    </ListItem>
+                  );
+                })}
+              </List>
+            </FormControl>
+
+            <TextField
+              variant="outlined"
+              multiline
+              rows={4}
+              fullWidth
+              label={"Add new comment here"}
+            />
+
+            <Button variant="contained"> Submit </Button>
+          </form>
+        </Paper>
       </Grid>
     </Grid>
   );
